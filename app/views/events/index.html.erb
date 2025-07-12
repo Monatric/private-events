@@ -1,6 +1,13 @@
 <h1>Find all fun events you can participate on, right here!</h1>
 
-<% @events.each do |event| %>
-  Location: <%= event.location %>
-  Location: <%= event.event_date %>
+<h2>Available events:</h2>
+<% if @events.size == 0 %>
+  <p>No events found. Try again later.</p>
+<% else %>
+  <% @events.each do |event| %>
+    <div>
+      <p>Location: <%= event.location %></p>
+      <p>Date: <%= event.event_date %></p>
+    </div>
+  <% end %>
 <% end %>

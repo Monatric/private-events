@@ -25,6 +25,18 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+
+    <nav>
+    <% if user_signed_in? %>
+      <%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :delete }  %>
+    <% else %>
+      <% unless controller_name == 'sessions' || controller_name == 'registrations' %>
+        <%= link_to "Log in", new_user_session_path %><br />
+        <%= link_to "Sign up", new_user_registration_path %><br />
+      <% end%>
+    <% end %>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

@@ -1,11 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<%= current_user.username %>
-<p>My created events:</p>
-<% if current_user.events.size.zero? %>
-  <p>Nothing fun to see here. Try creating an event?</p>
-<% else%>
-  <% current_user.events.each do |event| %>
-    <p><%= event.location %></p>
+<section class="profile">
+  <h1>Users#show</h1>
+  <p>Find me in app/views/users/show.html.erb</p>
+  <%= current_user.username %>
+  <p>My created events:</p>
+  <% if current_user.events.size.zero? %>
+    <p>Nothing fun to see here. Try creating an event?</p>
+  <% else%>
+    <% current_user.events.each do |event| %>
+      <p><%= event.location %></p>
+    <% end %>
   <% end %>
-<% end %>
+</section>

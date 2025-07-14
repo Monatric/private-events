@@ -5,10 +5,11 @@
     <p>Nothing fun to see here. Try creating an event?</p>
   <% else%>
     <% current_user.events.each do |event| %>
-      <p>Title: <%= event.title %></p>
-      <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
-      <p>Location: <%= event.location %></p>
-      <br>
+      <div class="event-card">
+        <p>Title: <%= event.title %></p>
+        <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
+        <p>Location: <%= event.location %></p>
+      </div>
     <% end %>
   <% end %>
 </section>

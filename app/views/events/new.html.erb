@@ -1,5 +1,16 @@
 <section class="event-form">
   <div class="event-form__container">
+    <% if @event.errors.any? %>
+      <div class="event-form__errors">
+        <p><%= pluralize(@event.errors.count, "error") %> prohibited this event from being created:</p>
+        <ul class="error-list">
+          <% @event.errors.each do |error| %>
+            <li class="error"><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
     <%= form_with model: @event do |form| %>
       <div class="event-form__label">
         <%= form.label :title %>

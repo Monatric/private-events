@@ -8,12 +8,14 @@
     <p>No events found. Try again later.</p>
   <% else %>
     <% @events.each do |event| %>
-      <div class="event-card">
-        <h4>Creator: <%= event.creator.username %></h4>
-        <p>Title: <%= event.title %></p>
-        <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
-        <p>Location: <%= event.location %></p>
-      </div>
+      <%= link_to event_path(event), class: "event-link" do %>
+        <div class="event-card">
+          <h4>Creator: <%= event.creator.username %></h4>
+          <p>Title: <%= event.title %></p>
+          <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
+          <p>Location: <%= event.location %></p>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </section>

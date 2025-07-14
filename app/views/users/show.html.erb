@@ -6,9 +6,8 @@
   <% else%>
     <% current_user.events.each do |event| %>
       <p>Title: <%= event.title %></p>
-      <p>Date: <%= event.event_date %></p>
+      <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
       <p>Location: <%= event.location %></p>
-      <p>Details: <%= event.details %></p>
       <br>
     <% end %>
   <% end %>

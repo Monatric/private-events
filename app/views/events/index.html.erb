@@ -9,8 +9,10 @@
   <% else %>
     <% @events.each do |event| %>
       <div>
+        <p>Title: <%= event.title %></p>
+        <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
         <p>Location: <%= event.location %></p>
-        <p>Date: <%= event.event_date %></p>
+        <br>
       </div>
     <% end %>
   <% end %>

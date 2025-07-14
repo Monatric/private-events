@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "/:username", to: "users#show", as: "profile"
 
-  resources :events, only: %i[ new create index ]
+  resources :events, only: %i[ new create index show ]
 
   devise_for :users
   root "events#index"

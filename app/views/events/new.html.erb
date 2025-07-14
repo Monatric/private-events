@@ -1,0 +1,37 @@
+<section class="event-form">
+  <div class="event-form__container">
+    <%= form_with model: @event do |form| %>
+      <div class="event-form__label">
+        <%= form.label :title %>
+      </div>
+      <div class="event-form__input">
+        <%= form.text_field :title, maxlength: 50 %>
+      </div>
+
+      <div class="event-form__label">
+        <%= form.label :location %>
+      </div>
+      <div class="event-form__input">
+        <%= form.text_field :location, maxlength: 50 %>
+      </div>
+
+      <div class="event-form__label">
+        <%= form.label :details %>
+      </div>
+      <div class="event-form__input">
+        <%= form.text_area :details, maxlength: 1000 %>
+      </div>
+
+      <div class="event-form__label">
+        <%= form.label :event_date %>
+      </div>
+      <div class="event-form__input">
+        <%= form.datetime_field :event_date, min: 1.day.from_now, max: 1.year.from_now, include_seconds: false %>
+      </div>
+
+      <div class="event-form__submit">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+</section>

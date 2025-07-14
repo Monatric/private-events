@@ -8,11 +8,11 @@
     <p>No events found. Try again later.</p>
   <% else %>
     <% @events.each do |event| %>
-      <div>
+      <div class="event-card">
+        <h4>Creator: <%= event.creator.username %></h4>
         <p>Title: <%= event.title %></p>
         <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
         <p>Location: <%= event.location %></p>
-        <br>
       </div>
     <% end %>
   <% end %>

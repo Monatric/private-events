@@ -1,0 +1,9 @@
+<section class="event-details">
+  <div class="event-card">
+    <h4>Creator: <%= @event.creator.username %></h4>
+    <p>Title: <%= @event.title %></p>
+    <p>Date: <%= @event.event_date.to_formatted_s(:long) %></p>
+    <p>Location: <%= @event.location %></p>
+    <p>Details: <%= @event.details %></p>
+  </div>
+</section>

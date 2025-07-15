@@ -1,15 +1,39 @@
 <section class="profile">
   <h3>Name: <%= current_user.username %></h3>
-  <p>My created events:</p>
-  <% if current_user.events.size.zero? %>
-    <p>Nothing fun to see here. Try creating an event?</p>
-  <% else%>
-    <% current_user.events.each do |event| %>
-      <div class="event-card">
-        <p>Title: <%= event.title %></p>
-        <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
-        <p>Location: <%= event.location %></p>
-      </div>
-    <% end %>
-  <% end %>
+  <div class="profile-events">
+    <div class="created-events">
+      <p>My created events:</p>
+      <% if current_user.events.size.zero? %>
+        <p>Nothing fun to see here. Try creating an event?</p>
+      <% else%>
+        <% current_user.events.each do |event| %>
+          <div class="event-card">
+            <p>Title: <%= event.title %></p>
+            <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
+            <p>Location: <%= event.location %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="attended-events">
+      <p>My attended events:</p>
+        <% if current_user.events.size.zero? %>
+        <p>Nothing fun to see here. Try attending an event?</p>
+      <% else%>
+        <% current_user.attended_events.each do |event| %>
+          <%= link_to event_path(event), class: "event-link" do %>
+            <div class="event-card">
+              <p>Creator: <%= event.creator.username %></p>
+              <p>Title: <%= event.title %></p>
+              <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
+              <p>Location: <%= event.location %></p>
+              <br>
+              <p><em>Click for more info.</em></p>
+            </div>
+          <% end%>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </section>

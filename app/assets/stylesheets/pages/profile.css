@@ -15,3 +15,13 @@
 .profile-events .attended-events {
   flex: 2;
 }
+
+.profile-events .attended-events .attended-events-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.profile-events .attended-events .attended-events-container>div {
+  width: 100%;
+}

@@ -21,23 +21,48 @@
     </div>
 
     <div class="attended-events">
-      <p>My attended events:</p>
-        <% if current_user.events.size.zero? %>
-        <p>Nothing fun to see here. Try attending an event?</p>
-      <% else%>
-        <% current_user.attended_events.each do |event| %>
-          <%= link_to event_path(event), class: "event-link" do %>
-            <div class="event-card">
-              <p>Creator: <%= event.creator.username %></p>
-              <p>Title: <%= event.title %></p>
-              <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
-              <p>Location: <%= event.location %></p>
-              <br>
-              <p><em>Click for more info.</em></p>
-            </div>
-          <% end%>
-        <% end %>
-      <% end %>
+      <h4>My attended events:</h4>
+      <div class="attended-events-container">
+        <div class="attended-events-past">
+          <p>Past Events:</p>
+          <% if current_user.events.size.zero? %>
+            <p>No past attended events. Try attending an event?</p>
+          <% else%>
+            <% current_user.attended_events.each do |event| %>
+              <%= link_to event_path(event), class: "event-link" do %>
+                <div class="event-card">
+                  <p>Creator: <%= event.creator.username %></p>
+                  <p>Title: <%= event.title %></p>
+                  <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
+                  <p>Location: <%= event.location %></p>
+                  <br>
+                  <p><em>Click for more info.</em></p>
+                </div>
+              <% end%>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="attended-events-future">
+          <p>Future Events:</p>
+          <% if current_user.events.size.zero? %>
+            <p>No future events. Try attending an event?</p>
+          <% else%>
+            <% current_user.attended_events.each do |event| %>
+              <%= link_to event_path(event), class: "event-link" do %>
+                <div class="event-card">
+                  <p>Creator: <%= event.creator.username %></p>
+                  <p>Title: <%= event.title %></p>
+                  <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
+                  <p>Location: <%= event.location %></p>
+                  <br>
+                  <p><em>Click for more info.</em></p>
+                </div>
+              <% end%>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </section>

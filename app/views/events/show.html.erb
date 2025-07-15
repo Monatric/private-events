@@ -25,6 +25,11 @@
       <%= button_tag "Joined", class: "neutral-btn" %>
     <% elsif event_creator?(current_user, @event.creator_id) %>
       <p><em>You own this event.</em></p>
+    <% elsif event_finished?(@event.id) %>
+      <% if event_joined?(current_user, @event.id) %>
+        <p>You joined this event.</p>
+      <% end %>
+      <p>This event has ended.</p>
     <% else %>
       <%= button_to "Join", attendances_path(event_id: @event.id), class: "primary-btn" %>
     <% end %>

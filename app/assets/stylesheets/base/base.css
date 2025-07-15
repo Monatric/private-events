@@ -19,10 +19,6 @@ body {
   background-color: #f5f7fa;
 }
 
-button {
-  all: unset;
-}
-
 .alert {
   padding: 20px;
   background-color: #f44336;
@@ -33,11 +29,4 @@ button {
   padding: 20px;
   background-color: #2E7D31;
   color: white;
-}
-
-.primary-btn {
-  padding: 0.5rem 0.75rem;
-  color: white;
-  background-color: var(--primary-color);
-  border-radius: 12px;
 }

@@ -5,6 +5,13 @@
     <p>Date: <%= @event.event_date.to_formatted_s(:long) %></p>
     <p>Location: <%= @event.location %></p>
     <p>Details: <%= @event.details %></p>
-    <%= button_to "Join", attendances_join_path, class: "primary-btn" %>
+    <br>
+    <% if event_joined?(current_user, @event.id) %>
+      <%= button_tag "Joined", class: "neutral-btn" %>
+    <% elsif event_creator?(current_user, @event.creator_id) %>
+      <p><em>You own this event.</em></p>
+    <% else %>
+      <%= button_to "Join", attendances_join_path(event_id: @event.id), class: "primary-btn" %>
+    <% end %>
   </div>
 </section>

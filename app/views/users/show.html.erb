@@ -22,8 +22,8 @@
 
     <div class="attended-events">
       <h4>My attended events:</h4>
-      <div class="attended-events-container">
-        <div class="attended-events-past">
+      <div class="events-container">
+        <div class="events-container__list">
           <p>Past Events:</p>
           <% if current_user.events.size.zero? %>
             <p>No past attended events. Try attending an event?</p>
@@ -34,7 +34,7 @@
           <% end %>
         </div>
 
-        <div class="attended-events-future">
+        <div class="events-container__list">
           <p>Future Events:</p>
           <% if current_user.events.size.zero? %>
             <p>No future events. Try attending an event?</p>

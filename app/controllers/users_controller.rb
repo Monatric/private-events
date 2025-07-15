@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @past_events = current_user.attended_events.where("event_date < ?", DateTime.now)
+    @future_events = current_user.attended_events.where("event_date > ?", DateTime.now)
   end
 
   private

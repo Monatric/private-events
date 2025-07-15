@@ -3,12 +3,28 @@
     <h1>Find all fun events you can participate on, right here!</h1>
     <%= link_to "Create event", new_event_path, class: "primary-btn" %>
   </header>
-  <h3>Available events:</h3>
-  <% if @events.size.zero? %>
-    <p>No events found. Try again later.</p>
-  <% else %>
-    <% @events.each do |event| %>
-      <%= render partial: "events/short_event_card", locals: { event: event } %>
-    <% end %>
-  <% end %>
+  <h4>All events are here.</h4>
+  <div class="events-container">
+    <div class="events-container__list">
+      <p>Past Events:</p>
+      <% if @past_events.size.zero? %>
+        <p>No events found. Try again later.</p>
+      <% else %>
+        <% @past_events.each do |event| %>
+          <%= render partial: "events/short_event_card", locals: { event: event } %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="events-container__list">
+      <p>Future Events:</p>
+      <% if @future_events.size.zero? %>
+        <p>No events found. Try again later.</p>
+      <% else %>
+        <% @future_events.each do |event| %>
+          <%= render partial: "events/short_event_card", locals: { event: event } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </section>

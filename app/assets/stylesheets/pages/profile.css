@@ -1,0 +1,17 @@
+.profile-events {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.profile-events>div {
+  width: 100%;
+}
+
+.profile-events .created-events {
+  flex: 1;
+}
+
+.profile-events .attended-events {
+  flex: 2;
+}

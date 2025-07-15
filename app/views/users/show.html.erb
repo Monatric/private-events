@@ -7,11 +7,15 @@
         <p>Nothing fun to see here. Try creating an event?</p>
       <% else%>
         <% current_user.events.each do |event| %>
-          <div class="event-card">
-            <p>Title: <%= event.title %></p>
-            <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
-            <p>Location: <%= event.location %></p>
-          </div>
+          <%= link_to event_path(event), class: "event-link" do %>
+            <div class="event-card">
+              <p>Title: <%= event.title %></p>
+              <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
+              <p>Location: <%= event.location %></p>
+              <br>
+              <p><em>Click for more info.</em></p>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>

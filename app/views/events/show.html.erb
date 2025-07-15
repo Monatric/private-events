@@ -5,6 +5,21 @@
     <p>Date: <%= @event.event_date.to_formatted_s(:long) %></p>
     <p>Location: <%= @event.location %></p>
     <p>Details: <%= @event.details %></p>
+
+    <br>
+
+    <h4>Total attendees: <%= @event.attendees.size %></h4>
+    <p>List of attendees:</p>
+    <% if @event.attendees.size.zero? %>
+      <p>None found.</p>
+    <% else %>
+      <% @event.attendees.each do |attendee| %>
+        <ul>
+          <li><%= attendee.username %></li>
+        </ul>
+      <% end %>
+    <% end %>
+
     <br>
     <% if event_joined?(current_user, @event.id) %>
       <%= button_tag "Joined", class: "neutral-btn" %>

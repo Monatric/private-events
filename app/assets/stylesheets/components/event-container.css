@@ -1,0 +1,9 @@
+.events-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.events-container__list {
+  width: 100%;
+}

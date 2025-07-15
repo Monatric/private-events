@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post "attendances/join"
+  post "attendances", to: "attendances#create"
   get "/:username", to: "users#show", as: "profile"
 
   resources :events, only: %i[ new create index show ]

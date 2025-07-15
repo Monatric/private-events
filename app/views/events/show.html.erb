@@ -26,7 +26,7 @@
     <% elsif event_creator?(current_user, @event.creator_id) %>
       <p><em>You own this event.</em></p>
     <% else %>
-      <%= button_to "Join", attendances_join_path(event_id: @event.id), class: "primary-btn" %>
+      <%= button_to "Join", attendances_path(event_id: @event.id), class: "primary-btn" %>
     <% end %>
   </div>
 </section>

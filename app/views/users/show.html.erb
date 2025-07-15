@@ -29,16 +29,7 @@
             <p>No past attended events. Try attending an event?</p>
           <% else%>
             <% @past_events.each do |event| %>
-              <%= link_to event_path(event), class: "event-link" do %>
-                <div class="event-card">
-                  <p>Creator: <%= event.creator.username %></p>
-                  <p>Title: <%= event.title %></p>
-                  <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
-                  <p>Location: <%= event.location %></p>
-                  <br>
-                  <p><em>Click for more info.</em></p>
-                </div>
-              <% end%>
+              <%= render partial: "events/short_event_card", locals: { event: event } %>
             <% end %>
           <% end %>
         </div>
@@ -49,16 +40,7 @@
             <p>No future events. Try attending an event?</p>
           <% else%>
             <% @future_events.each do |event| %>
-              <%= link_to event_path(event), class: "event-link" do %>
-                <div class="event-card">
-                  <p>Creator: <%= event.creator.username %></p>
-                  <p>Title: <%= event.title %></p>
-                  <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
-                  <p>Location: <%= event.location %></p>
-                  <br>
-                  <p><em>Click for more info.</em></p>
-                </div>
-              <% end%>
+              <%= render partial: "events/short_event_card", locals: { event: event } %>
             <% end %>
           <% end %>
         </div>

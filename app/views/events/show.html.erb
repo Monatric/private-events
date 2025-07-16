@@ -23,7 +23,7 @@
 
       <br>
       <% if event_joined?(current_user, @event) %>
-        <%= button_tag "Joined", class: "neutral-btn" %>
+        <%= button_to "Unjoin", attendance_path(@event), method: :delete, class: "secondary-btn", data: { turbo_confirm: "Are you sure?" } %>
       <% elsif event_creator?(current_user, @event) %>
         <p><em>You own this event.</em></p>
       <% elsif @event.event_date.past? %>

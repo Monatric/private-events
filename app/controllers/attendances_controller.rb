@@ -7,4 +7,10 @@ class AttendancesController < ApplicationController
     current_user.attendances.create!(attended_event: @event)
     redirect_back fallback_location: root_url, notice: "Joined successfully!"
   end
+
+  def destroy
+    @event = Event.find(params[:id])
+    p "TEST + #{@event}"
+    p "HELLO"
+  end
 end

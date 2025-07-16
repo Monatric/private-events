@@ -29,6 +29,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_back fallback_location: root_url, notice: "Event updated succesfully!"
+    else
+      flash.now[:alert] = "Event cannot be updated."
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
     def event_params

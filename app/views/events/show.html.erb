@@ -22,12 +22,12 @@
       <% end %>
 
       <br>
-      <% if event_joined?(current_user, @event.id) %>
+      <% if event_joined?(current_user, @event) %>
         <%= button_tag "Joined", class: "neutral-btn" %>
-      <% elsif event_creator?(current_user, @event.creator_id) %>
+      <% elsif event_creator?(current_user, @event) %>
         <p><em>You own this event.</em></p>
       <% elsif @event.event_date.past? %>
-        <% if event_joined?(current_user, @event.id) %>
+        <% if event_joined?(current_user, @event) %>
           <p>You joined this event.</p>
         <% end %>
         <p>This event has ended.</p>
@@ -37,7 +37,9 @@
     </div>
 
     <div class="event-card__side">
-      <%= link_to "Edit", edit_event_path %>
+      <% if event_creator?(current_user, @event) %>
+        <%= link_to "Edit", edit_event_path %>
+      <% end %>
     </div>
   </div>
 </section>

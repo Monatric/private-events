@@ -6,9 +6,4 @@ module EventsHelper
   def event_creator?(user, event_creator_id)
     user.id == event_creator_id
   end
-
-  def event_finished?(event_id)
-    p "TEST + #{Event.past}"
-    Event.past.where(id: event_id).any?
-  end
 end

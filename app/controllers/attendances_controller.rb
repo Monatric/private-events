@@ -10,7 +10,7 @@ class AttendancesController < ApplicationController
 
   def destroy
     @event = Event.find(params[:id])
-    p "TEST + #{@event}"
-    p "HELLO"
+    @event.attendees.destroy(current_user)
+    redirect_back fallback_location: root_url, notice: "Unjoined successfully!"
   end
 end

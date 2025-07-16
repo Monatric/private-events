@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   post "attendances", to: "attendances#create"
   get "/:username", to: "users#show", as: "profile"
 
-  resources :events, only: %i[ new create index show ]
+  resources :events
 
   devise_for :users
   root "events#index"

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   post "attendances", to: "attendances#create"
+  delete "attendances/:id", to: "attendances#destroy"
+
   get "/:username", to: "users#show", as: "profile"
 
   resources :events

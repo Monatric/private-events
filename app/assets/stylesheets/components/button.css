@@ -10,6 +10,14 @@ button {
   cursor: pointer;
 }
 
+.secondary-btn {
+  padding: 0.5rem 0.75rem;
+  color: white;
+  background-color: var(--secondary-color);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
 .neutral-btn {
   padding: 0.5rem 0.75rem;
   color: white;

@@ -1,9 +1,9 @@
 module EventsHelper
-  def event_joined?(user, event_id)
-    user.attended_event_ids.include?(event_id)
+  def event_joined?(user, event)
+    user.attended_event_ids.include?(event.id)
   end
 
-  def event_creator?(user, event_creator_id)
-    user.id == event_creator_id
+  def event_creator?(user, event)
+    user.id == event.creator_id
   end
 end

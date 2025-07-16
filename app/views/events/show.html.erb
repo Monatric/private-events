@@ -1,37 +1,43 @@
 <section class="event-details">
   <div class="event-card">
-    <h4>Creator: <%= @event.creator.username %></h4>
-    <p>Title: <%= @event.title %></p>
-    <p>Date: <%= @event.event_date.to_formatted_s(:long) %></p>
-    <p>Location: <%= @event.location %></p>
-    <p>Details: <%= @event.details %></p>
+    <div class="event-card__side">
+      <h4>Creator: <%= @event.creator.username %></h4>
+      <p>Title: <%= @event.title %></p>
+      <p>Date: <%= @event.event_date.to_formatted_s(:long) %></p>
+      <p>Location: <%= @event.location %></p>
+      <p>Details: <%= @event.details %></p>
 
-    <br>
+      <br>
 
-    <h4>Total attendees: <%= @event.attendees.size %></h4>
-    <p>List of attendees:</p>
-    <% if @event.attendees.size.zero? %>
-      <p>None found.</p>
-    <% else %>
-      <% @event.attendees.each do |attendee| %>
-        <ul>
-          <li><%= attendee.username %></li>
-        </ul>
+      <h4>Total attendees: <%= @event.attendees.size %></h4>
+      <p>List of attendees:</p>
+      <% if @event.attendees.size.zero? %>
+        <p>None found.</p>
+      <% else %>
+        <% @event.attendees.each do |attendee| %>
+          <ul>
+            <li><%= attendee.username %></li>
+          </ul>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <br>
-    <% if event_joined?(current_user, @event.id) %>
-      <%= button_tag "Joined", class: "neutral-btn" %>
-    <% elsif event_creator?(current_user, @event.creator_id) %>
-      <p><em>You own this event.</em></p>
-    <% elsif @event.event_date.past? %>
+      <br>
       <% if event_joined?(current_user, @event.id) %>
-        <p>You joined this event.</p>
+        <%= button_tag "Joined", class: "neutral-btn" %>
+      <% elsif event_creator?(current_user, @event.creator_id) %>
+        <p><em>You own this event.</em></p>
+      <% elsif @event.event_date.past? %>
+        <% if event_joined?(current_user, @event.id) %>
+          <p>You joined this event.</p>
+        <% end %>
+        <p>This event has ended.</p>
+      <% else %>
+        <%= button_to "Join", attendances_path(event_id: @event.id), class: "primary-btn" %>
       <% end %>
-      <p>This event has ended.</p>
-    <% else %>
-      <%= button_to "Join", attendances_path(event_id: @event.id), class: "primary-btn" %>
-    <% end %>
+    </div>
+
+    <div class="event-card__side">
+      <%= link_to "Edit", edit_event_path %>
+    </div>
   </div>
 </section>

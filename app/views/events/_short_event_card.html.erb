@@ -1,10 +1,12 @@
 <%= link_to event_path(event), class: "event-link" do %>
   <div class="event-card">
-    <h4>Creator: <%= event.creator.username %></h4>
-    <p>Title: <%= event.title %></p>
-    <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
-    <p>Location: <%= event.location %></p>
-    <br>
-    <p><em>Click for more info.</em></p>
+    <div class="event-card__side">
+      <h4>Creator: <%= event.creator.username %></h4>
+      <p>Title: <%= event.title %></p>
+      <p>Date: <%= event.event_date.to_formatted_s(:long) %></p>
+      <p>Location: <%= event.location %></p>
+      <br>
+      <p><em>Click for more info.</em></p>
+    </div>
   </div>
 <% end%>

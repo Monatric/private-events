@@ -39,6 +39,7 @@
     <div class="event-card__side">
       <% if event_creator?(current_user, @event) %>
         <%= link_to "Edit", edit_event_path %>
+        <%= link_to "Delete", event_path, data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
       <% end %>
     </div>
   </div>

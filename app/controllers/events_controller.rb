@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to root_url, notice: "Event deleted sucessfully!"
+    redirect_to profile_url(username: current_user.username), notice: "Event deleted sucessfully!", status: :see_other
   end
 
   private

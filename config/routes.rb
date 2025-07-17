@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "/:username", to: "users#show", as: "profile"
 
+  resources :invitations, only: %i[ create ]
   resources :attendances, only: %i[ create destroy ]
   resources :events
 

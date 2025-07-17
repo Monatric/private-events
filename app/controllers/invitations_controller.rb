@@ -16,7 +16,7 @@ class InvitationsController < ApplicationController
       @event = Event.find(params[:event])
       @invitee = User.find(params[:invitee])
 
-      if @event.invitees.include?(@invitee)
+      if @invitee.invited_to?(@event)
         redirect_back fallback_location: root_url, alert: "#{@invitee.username} has already been invited."
       end
     end

@@ -6,4 +6,8 @@ module EventsHelper
   def event_creator?(user, event)
     user.id == event.creator_id
   end
+
+  def invited?(event, invitee)
+    event.invitees.include?(invitee)
+  end
 end

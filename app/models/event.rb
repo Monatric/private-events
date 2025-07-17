@@ -5,7 +5,9 @@ class Event < ApplicationRecord
 
   belongs_to :creator, class_name: "User"
   has_many :attendances, foreign_key: :attended_event_id
+  has_many :invitations
   has_many :attendees, through: :attendances, source: :attendee
+  has_many :invitees, through: :invitations, source: :invitee
 
   scope :past, -> { where("event_date < ?", DateTime.now) }
   scope :future, -> { where("event_date > ?", DateTime.now) }

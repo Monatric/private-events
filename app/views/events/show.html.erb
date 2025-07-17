@@ -45,7 +45,11 @@
           <ul class="user-list">
             <% @other_users.each do |user| %>
               <li><%= user.username %></li>
-              <%= button_to "Invite", invitations_path(event: @event, invitee: user), class: "primary-btn" %>
+              <% if current_user.invitations.where(invitee_id: user.id, event_id: @event).any? %>
+                <%= button_to "Invited", nil, class: "neutral-btn", disabled: true %>
+              <% else %>
+                <%= button_to "Invite", invitations_path(event: @event, invitee: user), class: "primary-btn" %>
+              <% end %>
             <% end %>
           </ul>
         </div>

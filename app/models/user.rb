@@ -12,6 +12,6 @@ class User < ApplicationRecord
   has_many :attendances, foreign_key: :attendee_id
   has_many :attended_events, through: :attendances
 
-  has_many :invitations, foreign_key: :inviter_id, class_name: "Invitation", dependent: :destroy
-  has_many :invitees, foreign_key: :invitee_id, class_name: "Invitation", dependent: :destroy
+  has_many :invitations, foreign_key: :invitee_id, class_name: "Invitation", dependent: :destroy
+  has_many :invitees, foreign_key: :inviter_id, class_name: "Invitation", dependent: :destroy
 end

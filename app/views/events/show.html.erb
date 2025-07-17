@@ -31,8 +31,10 @@
           <p>You joined this event.</p>
         <% end %>
         <p>This event has ended.</p>
-      <% else %>
+      <% elsif current_user.invited_to?(@event) %>
         <%= button_to "Join", attendances_path(event_id: @event.id), class: "primary-btn" %>
+      <% else %>
+        <p>You are not invited to this event.</p>
       <% end %>
     </div>
 
@@ -40,19 +42,21 @@
       <% if event_creator?(current_user, @event) %>
         <%= link_to "Edit", edit_event_path %>
         <%= link_to "Delete", event_path, data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
-        <div class="user-list-container">
-          <h4>Invite users:</h4>
-          <ul class="user-list">
-            <% @other_users.each do |user| %>
-              <li><%= user.username %></li>
-              <% if user.invited_to?(@event) %>
-                <%= button_to "Invited", nil, class: "neutral-btn", disabled: true %>
-              <% else %>
-                <%= button_to "Invite", invitations_path(event: @event, invitee: user), class: "primary-btn" %>
+        <% unless @event.event_date.past? %>
+          <div class="user-list-container">
+            <h4>Invite users:</h4>
+            <ul class="user-list">
+              <% @other_users.each do |user| %>
+                <li><%= user.username %></li>
+                <% if user.invited_to?(@event) %>
+                  <%= button_to "Invited", nil, class: "neutral-btn", disabled: true %>
+                <% else %>
+                  <%= button_to "Invite", invitations_path(event: @event, invitee: user), class: "primary-btn" %>
+                <% end %>
               <% end %>
-            <% end %>
-          </ul>
-        </div>
+            </ul>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

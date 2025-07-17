@@ -1,0 +1,12 @@
+.user-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.user-list li,
+.user-list form {
+  width: 30px;
+  max-width: 50%;
+  flex: 40%;
+}

@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  post "attendances", to: "attendances#create"
-  delete "attendances/:id", to: "attendances#destroy", as: "attendance"
-
   get "/:username", to: "users#show", as: "profile"
 
+  resources :attendances, only: %i[ create destroy ]
   resources :events
 
   devise_for :users

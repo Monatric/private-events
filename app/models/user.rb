@@ -14,4 +14,8 @@ class User < ApplicationRecord
 
   has_many :invitations, foreign_key: :invitee_id, class_name: "Invitation", dependent: :destroy
   has_many :invitees, foreign_key: :inviter_id, class_name: "Invitation", dependent: :destroy
+
+  def invited_to?(event)
+    invitations.exists?(event: event)
+  end
 end

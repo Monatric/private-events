@@ -22,7 +22,9 @@
       <% end %>
 
       <br>
-      <% if event_joined?(current_user, @event) %>
+      <% if !user_signed_in? %>
+        <p>You must be logged in to join.</p>
+      <% elsif event_joined?(current_user, @event) %>
         <%= button_to "Unjoin", attendance_path(@event), method: :delete, class: "secondary-btn", data: { turbo_confirm: "Are you sure?" } %>
       <% elsif event_creator?(current_user, @event) %>
         <p><em>You own this event.</em></p>
@@ -39,7 +41,7 @@
     </div>
 
     <div class="event-card__side">
-      <% if event_creator?(current_user, @event) %>
+      <% if user_signed_in? && event_creator?(current_user, @event) %>
         <%= link_to "Edit", edit_event_path %>
         <%= link_to "Delete", event_path, data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
         <% unless @event.event_date.past? %>

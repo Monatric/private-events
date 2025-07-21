@@ -16,3 +16,7 @@ The project is guided by the Rails course in [TheOdinProject](https://www.theodi
 - Created view event helpers and view conditionals based on varying user's state. This includes status of invitation whether or not the user can join, unjoining, inviting users as the owner, and using the scopes and model methods for past and future events and invitation existence.
 - Built user profile to show created events, resourceful routes, and RESTful controller actions.
 - Reduced repetitive codes in views by building partials and rendering them.
+
+## Screenshots
+
+![Root page](public/root.png)

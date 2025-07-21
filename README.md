@@ -19,4 +19,16 @@ The project is guided by the Rails course in [TheOdinProject](https://www.theodi
 
 ## Screenshots
 
+### Root page
+
 ![Root page](public/root.png)
+
+### Profile page
+
+![Profile page](public/profile.png)
+
+### Event Show page (with varying user and event date status)
+
+![Event show owner past](public/event_show_owner_past.png)
+![Event show owner future](public/event_show_owner_future.png)
+![Event show invited future](public/event_show_invited_future.png)
